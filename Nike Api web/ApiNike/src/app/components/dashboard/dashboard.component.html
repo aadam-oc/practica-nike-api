@@ -1,0 +1,73 @@
+<div *ngIf="rol === 'admin'">
+    <p class="text-xl font-bold text-center mb-6">Modifica Usuarios</p>
+    <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()"
+            class="space-y-4">
+            <div class="form-group">
+                <label for="id"
+                    class="block text-sm font-medium text-gray-700">ID</label>
+                <input type="text" id="id" formControlName="id" placeholder="ID"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                <div
+                    *ngIf="userForm.get('id')?.invalid && userForm.get('id')?.touched"
+                    class="text-red-500 text-sm mt-1">
+                    <small *ngIf="userForm.get('id')?.errors?.['required']">ID
+                        es obligatorio.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email"
+                    class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" formControlName="email"
+                    placeholder="Email"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                <div
+                    *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+                    class="text-red-500 text-sm mt-1">
+                    <small
+                        *ngIf="userForm.get('email')?.errors?.['required']">Email
+                        es obligatorio.</small>
+                    <small
+                        *ngIf="userForm.get('email')?.errors?.['email']">Email
+                        no es válido.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contrasena"
+                    class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input type="password" id="contrasena" formControlName="contrasena"
+                    placeholder="Contraseña"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                <div
+                    *ngIf="userForm.get('contrasena')?.invalid && userForm.get('contrasena')?.touched"
+                    class="text-red-500 text-sm mt-1">
+                    <small
+                        *ngIf="userForm.get('contrasena')?.errors?.['required']">Contraseña
+                        es obligatoria.</small>
+                    <small
+                        *ngIf="userForm.get('contrasena')?.errors?.['minlength']">Debe
+                        tener al menos 8 caracteres.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rol"
+                    class="block text-sm font-medium text-gray-700">Rol</label>
+                <select id="rol" formControlName="rol"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <div
+                    *ngIf="userForm.get('rol')?.invalid && userForm.get('rol')?.touched"
+                    class="text-red-500 text-sm mt-1">
+                    <small
+                        *ngIf="userForm.get('rol')?.errors?.['required']">Rol
+                        es obligatorio.</small>
+                </div>
+            </div>
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                [disabled]="userForm.invalid">Registrar</button>
+        </form>
+    </div>
+</div>

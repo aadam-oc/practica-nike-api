@@ -1,0 +1,77 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- Encabezado del carrito -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold">Tu carrito</h1>
+        <p class="text-gray-600 mt-2">{{ carrito.length }} productos en tu carrito</p>
+      </div>
+      
+      <!-- Mensaje de carrito vacío -->
+      <div *ngIf="carrito.length === 0" class="text-center py-12 bg-gray-50 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h2 class="mt-4 text-xl font-medium text-gray-700">Tu carrito está vacío</h2>
+        <p class="mt-2 text-gray-500">Añade algunos productos para continuar con la compra</p>
+        <a routerLink="products" class="mt-6 inline-block bg-black text-white py-2 px-6 rounded-full hover:bg-gray-800 transition duration-300">
+          Ver productos
+        </a>
+      </div>
+      
+      <!-- Lista de productos en el carrito -->
+      <div *ngIf="carrito.length > 0" class="space-y-4 mb-8">
+        <div *ngFor="let item of carrito" class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition duration-200">
+          <!-- Información del producto -->
+          <div class="flex items-center space-x-4">
+            <!-- Aquí iría la imagen del producto si estuviera disponible -->
+            <div class="w-16 h-16 bg-gray-100 rounded-md flex items-center justify-center text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            
+            <div>
+              <p class="font-medium">Ref: {{ item.referencia_producto }}</p>
+              <p class="text-sm text-gray-500">Cantidad: {{ item.cantidad }}</p>
+            </div>
+          </div>
+          
+          <!-- Acciones -->
+          <div class="flex items-center space-x-2">
+            <button class="text-gray-400 hover:text-gray-600 p-1" title="Eliminar">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Resumen y botón de compra -->
+      <div *ngIf="carrito.length > 0" class="bg-gray-50 p-6 rounded-lg">
+        <div class="flex justify-between mb-4">
+          <span class="font-medium">Total de productos:</span>
+          <span>{{ carrito.length }}</span>
+        </div>
+        
+        <!-- Aquí iría el cálculo del total si estuviera disponible -->
+        
+        <div class="mt-6">
+          <button 
+            (click)="comprarCarrito()" 
+            class="w-full bg-black text-white py-3 px-4 rounded-full hover:bg-gray-800 transition duration-300 flex items-center justify-center"
+          >
+            Finalizar compra
+          </button>
+        </div>
+        
+        <div class="mt-4 text-center">
+          <a routerLink="/products" class="text-sm text-gray-600 hover:text-black transition duration-300">
+            Continuar comprando
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

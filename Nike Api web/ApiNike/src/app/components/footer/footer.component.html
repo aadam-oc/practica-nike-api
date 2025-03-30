@@ -1,0 +1,38 @@
+<footer class="bg-black text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <!-- Footer Links -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div *ngFor="let section of footerLinks">
+          <h3 class="font-bold text-sm mb-4">{{ section.title }}</h3>
+          <ul class="space-y-2">
+            <li *ngFor="let link of section.links">
+              <a href="#" class="text-gray-400 hover:text-white text-sm">{{ link }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Location and Legal -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-t border-gray-800 pt-6 text-xs text-gray-400">
+        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+          <div class="flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span>España</span>
+          </div>
+          <span>© 2023 Nike, Inc. Todos los derechos reservados</span>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-white">Guías</a>
+          <a href="#" class="hover:text-white">Términos de uso</a>
+          <a href="#" class="hover:text-white">Términos de venta</a>
+          <a href="#" class="hover:text-white">Política de empresa</a>
+          <a href="#" class="hover:text-white">Política de privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  

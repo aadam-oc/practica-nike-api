@@ -1,0 +1,63 @@
+<header class="w-full">
+    <!-- Top navigation bar -->
+    <div class="bg-[#F5F5F5] flex justify-between px-4 md:px-12">
+      <div class="flex items-center gap-x-2 md:gap-x-6 py-1">
+        <!-- Jordan logo -->
+        <div>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+            <path fill="currentColor" fill-rule="evenodd" d="M8.045 10.99V7.73L6.19 10.37 3.115 9.35l1.94 2.64-1.905 2.64 3.045-1.005 1.855 2.64v-3.26l3.11-1.02-3.115-.995zm12.84 1.02l-6.82 7.49H8.21l6.825-7.49L8.21 4.5h5.856l6.819 7.51z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Top right links -->
+      <div>
+        <ul class="flex flex-row gap-x-3 text-xs text-center justify-center items-center p-3">
+          <li class="font-medium hover:text-gray-600 cursor-pointer">Buscar una tienda</li>
+          <li class="text-gray-400">|</li>
+          <li class="font-medium hover:text-gray-600 cursor-pointer">Ayuda</li>
+          <li class="text-gray-400">|</li>
+          <li class="font-medium hover:text-gray-600 cursor-pointer">Únete a nosotros</li>
+          <li class="text-gray-400">|</li>
+          <li class="font-medium hover:text-gray-600 cursor-pointer">Iniciar sesión</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Main navigation bar -->
+    <div class="flex flex-col md:flex-row justify-between items-center py-4 px-4 md:px-12 border-b border-gray-200">
+      <!-- Nike logo -->
+      <div class="mb-4 md:mb-0">
+        <svg aria-hidden="true" class="w-16 h-6" focusable="false" viewBox="0 0 69 32" role="img" fill="none">
+          <path fill="currentColor" d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path>
+        </svg>
+      </div>
+      
+      <!-- Navigation links -->
+      <nav class="mb-4 md:mb-0">
+        <ul class="flex flex-row items-center justify-center font-medium text-sm md:text-base gap-x-4 md:gap-x-10">
+          <li><a routerLink="home" class="hover:text-gray-600 py-2">Home</a></li>
+          <li><a routerLink="products" class="hover:text-gray-600 py-2">Productos</a></li>
+          <li *ngIf="rol"><a routerLink="perfil" class="hover:text-gray-600 py-2">Perfil</a></li>
+          <li><a routerLink="carrito" class="hover:text-gray-600 py-2">Carrito</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Auth buttons -->
+      <div class="flex">
+        <div class="flex items-center gap-x-2 md:gap-x-4">
+          <button *ngIf="!rol" routerLink="login" class="bg-black text-white font-medium py-1.5 px-4 rounded-full hover:bg-gray-800 transition-colors text-sm">
+            Login
+          </button>
+          <button *ngIf="!rol" routerLink="register" class="bg-black text-white font-medium py-1.5 px-4 rounded-full hover:bg-gray-800 transition-colors text-sm">
+            Register
+          </button>
+          <button *ngIf="rol" class="bg-black text-white font-medium py-1.5 px-4 rounded-full hover:bg-gray-800 transition-colors text-sm" (click)="logout()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  

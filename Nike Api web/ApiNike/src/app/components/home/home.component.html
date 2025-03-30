@@ -1,0 +1,126 @@
+<main>
+  <!-- Hero Carousel -->
+  <section class="relative w-full h-[600px] overflow-hidden bg-black">
+    <!-- Split Background Images -->
+    <div class="absolute inset-0 flex">
+      <!-- Left side image -->
+      <div class="w-1/2 relative">
+        <img 
+          [src]="slides[currentSlide].leftImage" 
+          alt="Nike Hero Left" 
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        >
+      </div>
+      <!-- Right side image -->
+      <div class="w-1/2 relative">
+        <img 
+          [src]="slides[currentSlide].rightImage" 
+          alt="Nike Hero Right" 
+          class="absolute inset-0 w-full h-full object-cover object-center"
+        >
+      </div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+      <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-2">{{ slides[currentSlide].title }}</h1>
+      <p class="text-xl mb-8">{{ slides[currentSlide].subtitle }}</p>
+      <a [routerLink]="slides[currentSlide].buttonLink" class="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition">
+        {{ slides[currentSlide].buttonText }}
+      </a>
+    </div>
+    
+    <!-- Carousel Controls -->
+    <div class="absolute bottom-6 right-6 flex items-center space-x-2">
+      <button 
+        (click)="pauseSlide()" 
+        class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition"
+        aria-label="Pausar carrusel"
+      >
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </button>
+      <button 
+        (click)="prevSlide()" 
+        class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition"
+        aria-label="Slide anterior"
+      >
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button 
+        (click)="nextSlide()" 
+        class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition"
+        aria-label="Siguiente slide"
+      >
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Carousel Indicators -->
+    <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2">
+      <button 
+        *ngFor="let slide of slides; let i = index"
+        (click)="setSlide(i)" 
+        class="h-1 rounded-full transition-all duration-300"
+        [ngClass]="currentSlide === i ? 'w-8 bg-white' : 'w-2 bg-white/50 hover:bg-white/80 hover:w-4'"
+        [attr.aria-label]="'Ir al slide ' + (i + 1)"
+      ></button>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="py-16 px-4">
+    <div class="container mx-auto">
+      <!-- Section Title -->
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-bold mb-2">Productos destacados</h2>
+        <p class="text-gray-600">Descubre nuestras últimas novedades</p>
+      </div>
+      
+      <!-- Products Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div *ngFor="let product of featuredProducts" class="group">
+          <!-- Product Image -->
+          <div class="relative overflow-hidden mb-4">
+            <img 
+              [src]="product.image" 
+              [alt]="product.name" 
+              class="w-full h-[400px] object-cover object-center transition duration-300 group-hover:scale-105"
+            >
+          </div>
+          
+          <!-- Product Info -->
+          <div>
+            <p class="text-gray-500 text-sm">{{ product.category }}</p>
+            <h3 class="font-medium text-lg">{{ product.name }}</h3>
+            <p class="font-bold mt-1">{{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- View All Button -->
+      <div class="mt-12 text-center">
+        <a routerLink="/products" class="inline-block bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">
+          Ver todos los productos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nike Membership Section -->
+  <section class="py-16 px-4 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">HAZTE MIEMBRO DE NIKE</h2>
+      <p class="text-lg mb-8 max-w-2xl mx-auto">Regístrate gratis y obtén acceso a productos exclusivos, inspiración personalizada y las últimas novedades de Nike.</p>
+      <a routerLink="/register" class="inline-block bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">
+        Únete ahora
+      </a>
+    </div>
+  </section>
+</main>
+

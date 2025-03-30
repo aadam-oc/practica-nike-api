@@ -1,0 +1,8 @@
+<div class="space-y-6 p-4 bg-gray-100">
+    <h1 class="text-2xl font-semibold text-gray-800">Compras</h1>
+    <div *ngFor="let compra of compras" class="p-4 border border-gray-300 rounded-lg shadow-md bg-white">
+        <p class="text-lg font-semibold text-gray-800">Referencia: <span class="font-normal">{{ compra.referencia_producto }}</span></p>
+        <p class="text-lg font-semibold text-gray-800">Id_usuario: <span class="font-normal">{{ compra.id_usuario }}</span></p>
+        <p class="text-lg font-semibold text-gray-800">Cantidad: <span class="font-normal">{{ compra.cantidad }}</span></p>
+    </div>
+</div>
