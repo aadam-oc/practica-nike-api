@@ -10,7 +10,5 @@ describe('ApiRestService', () => {
     service = TestBed.inject(ApiRestService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  
 });

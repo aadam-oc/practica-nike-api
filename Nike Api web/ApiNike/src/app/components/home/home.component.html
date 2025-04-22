@@ -3,23 +3,16 @@
   <section class="relative w-full h-[600px] overflow-hidden bg-black">
     <!-- Split Background Images -->
     <div class="absolute inset-0 flex">
-      <!-- Left side image -->
-      <div class="w-1/2 relative">
-        <img 
-          [src]="slides[currentSlide].leftImage" 
-          alt="Nike Hero Left" 
-          class="absolute inset-0 w-full h-full object-cover object-center"
-        >
-      </div>
+      
+      
       <!-- Right side image -->
-      <div class="w-1/2 relative">
+      
         <img 
           [src]="slides[currentSlide].rightImage" 
           alt="Nike Hero Right" 
-          class="absolute inset-0 w-full h-full object-cover object-center"
+          class="object-cover object-center w-full"
         >
       </div>
-    </div>
     
     <!-- Hero Content -->
     <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">

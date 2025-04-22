@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../interfaces/product';
+import { get } from 'node:http';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,15 @@ export class ApiRestService {
 
   // Añadir producto a la API
   añadirProducto(producto: Product): Observable<any> {
+    
     return this.http.post(`${this.apiUrlProductos}/nike/productos`, producto);
+  }
+
+  
+
+  //editar producto en la API
+  editarProducto(producto: Product, referencia: string): Observable<any> {
+    return this.http.put(`${this.apiUrlProductos}/nike/productos/${referencia}`, producto);
   }
 
   // Verificar si un producto existe en la API por su referencia

@@ -18,7 +18,7 @@ export class HomeComponent {
       buttonText: "Comprar las Dn8",
       buttonLink: "/products",
       leftImage: "/assets/images/carr1.jpg",
-      rightImage: "/assets/images/carr1.jpg",
+      rightImage: "http://172.17.131.11:3000/uploads/1743692183929.jpg",
     },
     {
       title: "NIKE PEGASUS 41",
@@ -26,7 +26,7 @@ export class HomeComponent {
       buttonText: "Comprar ahora",
       buttonLink: "/products",
       leftImage: "/assets/images/carr1.jpg",
-      rightImage: "/assets/images/carr1.jpg",
+      rightImage: "http://172.17.131.11:3000/uploads/1743692231587.avif",
     },
     {
       title: "COLECCIÓN TECH FLEECE",
@@ -34,7 +34,7 @@ export class HomeComponent {
       buttonText: "Descubrir",
       buttonLink: "/products",
       leftImage: "/assets/images/carr1.jpg",
-      rightImage: "/assets/images/carr1.jpg",
+      rightImage: "http://172.17.131.11:3000/uploads/1743692274246.jpeg",
     },
   ]
 
@@ -44,21 +44,21 @@ export class HomeComponent {
       name: "Nike Sportswear Tech Fleece",
       category: "Sudadera con capucha",
       price: "109,99 €",
-      image: "/assets/images/product-1.jpg",
+      image: "http://172.17.131.11:3000/uploads/1743692311412.webp",
     },
     {
       id: 2,
       name: "Nike Air Force 1 '07",
       category: "Zapatillas",
       price: "119,99 €",
-      image: "/assets/images/product-2.jpg",
+      image: "http://172.17.131.11:3000/uploads/1743692333064.webp",
     },
     {
       id: 3,
       name: "Nike Dri-FIT Academy",
       category: "Chándal de fútbol",
       price: "89,99 €",
-      image: "/assets/images/product-3.jpg",
+      image: "http://172.17.131.11:3000/uploads/1743692350945.webp",
     },
   ]
 

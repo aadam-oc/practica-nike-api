@@ -17,6 +17,7 @@
             formControlName="referencia" 
             class="mt-1 block w-full border-b border-gray-300 py-2 px-3 focus:outline-none focus:border-black transition-colors"
             placeholder="Ej: 12345"
+            (blur)="buscarProducto()"
           >
           <div *ngIf="FormularioProducto.get('referencia')?.invalid && FormularioProducto.get('referencia')?.touched" class="text-red-500 text-xs mt-1">
             <span *ngIf="FormularioProducto.get('referencia')?.errors?.['required']">Este campo es obligatorio.</span>
@@ -121,12 +122,7 @@
               <div class="flex text-sm text-gray-600">
                 <label for="ruta_imagen" class="relative cursor-pointer bg-white rounded-md font-medium text-black hover:text-gray-700 focus-within:outline-none">
                   <span>Subir imagen</span>
-                  <input 
-                    id="ruta_imagen" 
-                    type="file" 
-                    class="sr-only" 
-                    (change)="onFileSelected($event)"
-                  >
+                  <input  id="ruta_imagen"  type="file"  class="sr-only"  (change)="onFileSelected($event)">
                 </label>
                 <p class="pl-1">o arrastra y suelta</p>
               </div>

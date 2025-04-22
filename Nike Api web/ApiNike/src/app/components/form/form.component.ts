@@ -17,6 +17,7 @@ export class FormComponent {
   imagenUrl: string = '';
   imagenSeleccionada: boolean = false;
   existe: boolean = false;
+  productoExistente: boolean = false;
 
   constructor(private apiRestService: ApiRestService) { }
 
@@ -42,25 +43,25 @@ export class FormComponent {
     }
   }
 
-  ExisteProducto(): void {
+  buscarProducto(): void { 
+    const referencia = this.FormularioProducto.get('referencia')?.value; //Recoge el valor de referencia 
 
-    const existe = this.apiRestService.productoExistente(this.FormularioProducto.value.referencia as string);
-    if (existe) {
-      this.existe = true;
-      this.apiRestService.getProductoReferencia(this.FormularioProducto.value.referencia as string).subscribe(producto => {
-        this.FormularioProducto.patchValue({
-          referencia: producto.Referencia,
-          nombre: producto.Nombre,
-          precio: producto.Precio,
-          descripcion: producto.Descripcion,
-          tipoProducto: producto.TipoProducto,
-          en_oferta: producto.EnOferta
-        });
+    if (referencia) {
+      this.apiRestService.getProductoReferencia(referencia).subscribe(producto => { 
+        if (producto) { 
+          this.FormularioProducto.patchValue({ 
+            nombre: producto.nombre,
+            precio: producto.precio,
+            descripcion: producto.descripcion,
+            tipoProducto: producto.tipo_de_producto,
+            en_oferta: producto.en_oferta,  
+          });
+          this.imagenUrl = producto.imagen; 
+          this.productoExistente = true; 
+        } else { 
+          this.productoExistente = false;
+        }
       });
-      
-    }
-    else {
-      this.existe = false;
     }
   }
 
@@ -82,13 +83,25 @@ export class FormComponent {
         cantidad: 1
       };
 
-      this.apiRestService.añadirProducto(producto).subscribe(response => {
-        console.log('Producto añadido:', response);
-        alert('Producto añadido');
-      }, error => {
-        console.error('Error al añadir producto:', error);
-        alert('Error al añadir producto');
-      });
+      //console.log(producto);
+      if (this.productoExistente) {
+        this.apiRestService.editarProducto(producto, producto.referencia).subscribe(response => {
+          console.log('Producto editado:', response);
+          alert('Producto editado correctamente');
+          this.FormularioProducto.reset();
+          this.imagenUrl = '';
+        });
+      } else {
+        this.apiRestService.añadirProducto(producto).subscribe(response => {
+          console.log('Producto añadido:', response);
+          alert('Producto añadido');
+        }, error => {
+          console.error('Error al añadir producto:', error);
+          alert('Error al añadir producto');
+        });
+      }
+
+      
 
     }
   }
