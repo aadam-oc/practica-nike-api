@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // Importar HttpClientTestingModule
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs'; // Importar 'of' para simular observables
 import { CarritoComponent } from './carrito.component';
 
 describe('CarritoComponent', () => {
@@ -8,14 +10,27 @@ describe('CarritoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CarritoComponent]
-    })
-    .compileComponents();
+      imports: [
+        CarritoComponent, // Importar el componente standalone
+        HttpClientTestingModule // Importar el módulo de pruebas para HttpClient
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}), // Simular parámetros de ruta
+            queryParams: of({}) // Simular parámetros de consulta
+          }
+        }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CarritoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  
+  it('should create the component', () => {
+    expect(component).toBeTruthy(); // Verificar que el componente se crea correctamente
+  });
 });

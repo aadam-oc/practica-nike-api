@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // Importar HttpClientTestingModule
 import { FormComponent } from './form.component';
 
 describe('FormComponent', () => {
@@ -7,7 +8,10 @@ describe('FormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormComponent]
+      imports: [
+        FormComponent, // Importar el componente standalone
+        HttpClientTestingModule // Importar el módulo de pruebas para HttpClient
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FormComponent);
@@ -15,7 +19,7 @@ describe('FormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the form component', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
