@@ -1,10 +1,10 @@
-describe('Formulario de Creación de Producto', () => {
+describe('Formulario de Creacion de Producto', () => {
   beforeEach(() => {
     // Antes de cada prueba, visita la página donde se encuentra el formulario
     cy.visit('/form');
   });
 
-  it('Debería mostrar los campos de entrada correctamente', () => {
+  it('Deberia mostrar los campos de entrada correctamente', () => {
     // Verifica que todos los campos estén presentes
     cy.get('#referencia').should('exist');
     cy.get('#nombre').should('exist');
@@ -15,7 +15,7 @@ describe('Formulario de Creación de Producto', () => {
     cy.get('#ruta_imagen').should('exist');
   });
 
-  it('Debería completar el formulario y enviarlo', () => {
+  it('Deberia completar el formulario y enviarlo', () => {
     // Completa los campos del formulario
     cy.get('#referencia').type('12');
     cy.get('#nombre').type('Producto Test');
@@ -40,7 +40,7 @@ describe('Formulario de Creación de Producto', () => {
     
   });
 
-  it('Debería mostrar errores si los campos están vacíos', () => {
+  it('Deberia mostrar errores si los campos están vacios', () => {
     // Envía el formulario sin completar los campos
     cy.get('button[type="submit"]').invoke('removeAttr', 'disabled').click();
 

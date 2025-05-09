@@ -1,5 +1,5 @@
 describe('Login', () => {
-  it('should login successfully with valid credentials', () => {
+  it('inicia sesion correctamente si el formulario es valido', () => {
     cy.visit('/login');  // Visita la página de login
 
     // Completa los campos del formulario
@@ -15,7 +15,7 @@ describe('Login', () => {
     cy.url().should('include', '/home');
   });
 
-  it('should show error message for invalid credentials', () => {
+  it('muestra mensaje si el formulario es incorrecto', () => {
     cy.visit('/login');  // Visita la página de login
 
     // Rellenamos con credenciales incorrectas
@@ -36,14 +36,14 @@ describe('Login', () => {
     cy.url().should('not.include', '/home');
   });
 
-  it('should disable the submit button when form is invalid', () => {
+  it('si el formulario no es correcto muestra como invalido', () => {
     cy.visit('/login');  // Visita la página de login
 
     // Deja el formulario vacío y verifica que el botón de submit esté deshabilitado
     cy.get('button[type="submit"]').should('be.disabled');
   });
 
-  it('should enable the submit button when form is valid', () => {
+  it('si el formulario esta correcto deja enviarlo', () => {
     cy.visit('/login');  // Visita la página de login
 
     // Rellena los campos con datos válidos
