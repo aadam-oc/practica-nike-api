@@ -37,7 +37,7 @@ describe('ProductsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fetch products on initialization', () => {
+  it('recoge productos al iniciarse', () => {
     const mockProductos = [
       { referencia: '13', nombre: 'Producto 1', precio: 100, descripcion: 'Descripción 1', cantidad: 10 },
       { referencia: '45', nombre: 'Producto 2', precio: 200, descripcion: 'Descripción 2', cantidad: 5 }
@@ -50,7 +50,7 @@ describe('ProductsComponent', () => {
     expect(component.productos).toEqual(mockProductos);
   });
 
-  it('should delete a product when eliminarProducto is called', () => {
+  it('eliminarProducto funciona', () => {
     const mockProductos = [
       { referencia: '13', nombre: 'Producto 1', precio: 100, descripcion: 'Descripción 1', cantidad: 10 },
       { referencia: '45', nombre: 'Producto 2', precio: 200, descripcion: 'Descripción 2', cantidad: 5 }
@@ -65,7 +65,7 @@ describe('ProductsComponent', () => {
     expect(component.productos[0].referencia).toBe('45');
   });
 
-  it('should add a product to the cart when anadirAlCarrito is called', () => {
+  it(' anadirAlCarrito funciona', () => {
     const referencia = '13';
     const mockCarritoInfo = {
       referencia: referencia,
@@ -79,7 +79,7 @@ describe('ProductsComponent', () => {
     expect(apiService.anadirAlCarrito).toHaveBeenCalledWith(mockCarritoInfo);
   });
 
-  it('should set the user role from localStorage on initialization', () => {
+  it('pilla el user role del localstorage', () => {
     spyOn(localStorage, 'getItem').and.callFake((key: string) => {
       if (key === 'rol') return 'admin';
       return null;

@@ -24,7 +24,7 @@ describe('ApiRestService', () => {
     expect(service).toBeTruthy(); // Verificar que el servicio se crea correctamente
   });
 
-  it('should add a product using añadirProducto', () => {
+  it(' añadirProducto funciona', () => {
     const mockProduct: Product = {
       referencia: '123',
       nombre: 'Producto de prueba',
@@ -47,7 +47,7 @@ describe('ApiRestService', () => {
     req.flush({ success: true }); // Simular respuesta del servidor
   });
 
-  it('should fetch products using getProductos', () => {
+  it('getProductos funciona', () => {
     const mockProductos = [
       { referencia: '123', nombre: 'Producto 1', precio: 100 },
       { referencia: '456', nombre: 'Producto 2', precio: 200 }
@@ -63,7 +63,7 @@ describe('ApiRestService', () => {
     req.flush(mockProductos); // Simular respuesta del servidor
   });
 
-  it('should edit a product using editarProducto', () => {
+  it('editarProducto funciona', () => {
     const mockProduct: Product = {
       referencia: '123',
       nombre: 'Producto actualizado',
@@ -86,7 +86,7 @@ describe('ApiRestService', () => {
     req.flush({ success: true }); // Simular respuesta del servidor
   });
 
-  it('should delete a product using eliminarProducto', () => {
+  it('eliminarProducto funciona', () => {
     service.eliminarProducto('123').subscribe(response => {
       expect(response).toEqual({ success: true });
     });
